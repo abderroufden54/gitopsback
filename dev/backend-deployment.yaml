@@ -1,10 +1,10 @@
-#3
+#4
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
   annotations:
-   version: "3"
+   version: 4
 spec:
   replicas: 1
   selector:
