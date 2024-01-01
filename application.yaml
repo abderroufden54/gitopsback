@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-back
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/abderroufden54/gitopsback
+    targetRevision: HEAD
+    repoSecret: argocd-backend-repo-secret
+    path: dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
