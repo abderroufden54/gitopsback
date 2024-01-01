@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: backend-deployment
   annotations:
-   version: 4
+   version: "5"
 spec:
   replicas: 1
   selector:
