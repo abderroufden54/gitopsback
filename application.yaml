@@ -8,7 +8,6 @@ spec:
   source:
     repoURL: https://github.com/abderroufden54/gitopsback
     targetRevision: HEAD
-    repoSecret: argocd-backend-repo-secret
     path: dev
   destination:
     server: https://kubernetes.default.svc
