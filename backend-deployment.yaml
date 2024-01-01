@@ -1,0 +1,38 @@
+#1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend-container
+          image: nodefac.azurecr.io/node:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: mongodblink
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: MONGODB_URI
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: JWT_SECRET_KEY
+            - name: frontweb
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-configmap
+                  key: FRONTEND_URL
+      imagePullSecrets:
+        - name: acr-secret
