@@ -1,10 +1,10 @@
-#19
+#20
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
   annotations:
-   version: "19"
+   version: "20"
 spec:
   replicas: 5
   strategy:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: backend-container
-          image: nodefac.azurecr.io/node:19
+          image: nodefac.azurecr.io/node:20
           ports:
             - containerPort: 5000
           env:
